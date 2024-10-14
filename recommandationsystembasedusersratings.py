@@ -53,13 +53,12 @@ class System_Recommender():
     popular_movies = list(set(df_movies_cnt.query('count >= @self.movie_rating_thres').index))
     movies_filter = df_ratings.movieId.isin(popular_movies).values
 
-    # Filtrer les utilisateurs actifs avec un seuil de nombre de notations
+
     df_users_cnt = pd.DataFrame(
     df_ratings.groupby('userId').size(),columns=['count'])
     active_users = list(set(df_users_cnt.query('count >= @self.user_rating_thres').index))
     users_filter = df_ratings.userId.isin(active_users).values
 
-    # Filtrer les évaluations basées sur les films populaires et les utilisateurs
     df_ratings_filtered = df_ratings[movies_filter & users_filter]
 
     user_movie_mat = df_ratings_filtered.pivot(
@@ -92,7 +91,6 @@ class System_Recommender():
     if len(common_movie_ids) == 0:
         return 0
 
-    # Get the ratings for the common movies for both users
     user_1_common_ratings = user_1_ratings.loc[common_movie_ids]
     user_2_common_ratings = user_2_ratings.loc[common_movie_ids]
 
