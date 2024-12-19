@@ -27,7 +27,6 @@ Assurez-vous d'avoir installé les bibliothèques Python suivantes :
 - **Pandas** : pour la manipulation des données.  
 - **NumPy** : pour les calculs mathématiques.  
 - **scikit-learn** : pour la vectorisation et le prétraitement.  
-- **gc** : pour la gestion de la mémoire (pour le système basé sur les évaluations des utilisateurs).
 
 Installez les bibliothèques avec :
 
